@@ -3,7 +3,12 @@
 import {Content, KeyTextField} from "@prismicio/client";
 import {SliceComponentProps} from "@prismicio/react";
 import {useEffect, useRef} from "react";
-import gsap from "gsap";
+
+import {Bounded} from "@/components/Bounded";
+import {gsap} from "gsap";
+import Shapes from "@/slices/Hero/Shapes";
+
+
 
 /**
  * Props for `Hero`.
@@ -75,15 +80,16 @@ const Hero = ({slice}: HeroProps): JSX.Element => {
         ));
     };
     return (
-        <section
+        <Bounded
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
             ref={component}
         >
             <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
+                <Shapes/>
                 <div className="col-start-1 md:row-start-1">
                     <h1
-                        className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tighter"
+                        className="mb-8 text-[clamp(3rem,10vmin,20rem)] font-extrabold leading-none tracking-tighter"
                         aria-label={
                             slice.primary.first_name + " " + slice.primary.last_name
                         }
@@ -101,7 +107,7 @@ const Hero = ({slice}: HeroProps): JSX.Element => {
           </span>
                 </div>
             </div>
-        </section>
+        </Bounded>
     );
 };
 
