@@ -20,6 +20,7 @@ export default function RootLayout({
         <body className={urbanist.className}>
         <Header/>
         {children}
+        <div style={{height: '100px'}}/>
         </body>
         </html>
     );
