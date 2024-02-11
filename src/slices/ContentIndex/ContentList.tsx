@@ -52,7 +52,9 @@ export default function ContentList({
                         }
                     })
             })
-        })
+            return () => ctx.revert();
+        }, component)
+
     }, []);
 
 
@@ -103,6 +105,15 @@ export default function ContentList({
             exp: -10,
         })
     })
+
+    //preloading images
+    useEffect(() => {
+        contentImages.forEach((url) => {
+            if (!url) return;
+            const img = new Image();
+            img.src = url;
+        })
+    }, [contentImages]);
 
     const onMouseEnter = (index: number) => {
         setCurrentItem(index)
