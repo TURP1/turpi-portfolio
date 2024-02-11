@@ -5,7 +5,9 @@ import Link from "next/link";
 import {MdArrowOutward} from "react-icons/md";
 import React, {useEffect, useRef, useState} from "react";
 import {gsap} from 'gsap';
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger)
 
 type ContentListProps = {
     items: Content.BlogPostDocument[] | Content.ProjectDocument[];
@@ -23,11 +25,38 @@ export default function ContentList({
     const [currentItem, setCurrentItem] = useState<null | number>(null);
     const component = useRef(null);
     const revealRef = useRef(null);
+    const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
 
     const lastMousePosition = useRef({x: 0, y: 0});
 
     const urlPrefix = contentType === 'Blog' ? '/blog' : '/project';
 
+//spawning cards animation
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            itemsRef.current.forEach((item) => {
+                gsap.fromTo(item, {
+                        opacity: 0,
+                        y: 20
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.3,
+                        ease: 'elastic.out',
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top bottom-=100px',
+                            end: 'bottom center',
+                            toggleActions: 'play none none none'
+                        }
+                    })
+            })
+        })
+    }, []);
+
+
+//hover cards animation
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             const mousePosition = {x: e.clientX, y: e.clientY + window.scrollY}
@@ -91,6 +120,7 @@ export default function ContentList({
                         {
                             isFilled.keyText(item.data.title) && (
                                 <li key={index}
+                                    ref={(el) => itemsRef.current[index] = el}
                                     onMouseEnter={() => onMouseEnter(index)}
                                     className="list-item opacity-0F">
                                     <Link href={urlPrefix + '/' + item.uid}
