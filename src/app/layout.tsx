@@ -32,7 +32,7 @@ export default function RootLayout({
         <html lang="en" className="bg-slate-900 text-slate-100">
         <body className={clsx(urbanist.className, "absolute top-0 left-0 right-0 min-h-screen")}>
         <Header/>
-        <main className='min-h-[600px]'>
+        <main>
             {children}
         </main>
         <Footer/>
