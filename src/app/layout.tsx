@@ -3,7 +3,7 @@ import {Urbanist} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import clsx from "clsx";
 
 const urbanist = Urbanist({subsets: ["latin"]});
@@ -20,16 +20,23 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="bg-slate-900 text-slate-100">
-        <body className={clsx(urbanist.className, "relative min-h-screen")}>
+        <body className={clsx(urbanist.className, "absolute top-0 left-0 right-0 min-h-screen")}>
         <Header/>
-        {children}
+        <main className='min-h-[600px]'>
+            {children}
+        </main>
         <Footer/>
-        <Image src='/bg1.jpeg'
-               quality={10}
-               alt='bg'
-               layout="fill"
-               objectFit="cover"
-               className="absolute pointer-events-none inset-0 -z-40 h-full opacity-1 mix-blend-soft-light"/>
+        <Image
+            priority
+            src='/bg1.jpeg'
+            quality={10}
+            alt='bg'
+            className="absolute pointer-events-none inset-0 -z-40 h-full opacity-1 mix-blend-soft-light"
+            fill
+            sizes="100vw"
+            style={{
+                objectFit: "cover"
+            }} />
 
         {/*<div*/}
         {/*    className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/bg1.jpeg')] opacity-1 mix-blend-soft-light "></div>*/}
