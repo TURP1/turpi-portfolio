@@ -26,6 +26,7 @@ export default function RootLayout({
             {children}
         </main>
         <Footer/>
+        <div className="background-gradient absolute inset-0 -z-50 max-h-screen"/>
         <Image
             priority
             src='/bg1.jpeg'
@@ -36,11 +37,7 @@ export default function RootLayout({
             sizes="100vw"
             style={{
                 objectFit: "cover"
-            }} />
-
-        {/*<div*/}
-        {/*    className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/bg1.jpeg')] opacity-1 mix-blend-soft-light "></div>*/}
-
+            }}/>
         </body>
         </html>
     );
