@@ -2,7 +2,19 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ad nostrud ad dolor tempor minim voluptate occaecat velit consequat occaecat laboris irure. Labore dolore voluptate velit."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]

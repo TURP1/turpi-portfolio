@@ -29,7 +29,7 @@ export default function ContentList({
 
     const lastMousePosition = useRef({x: 0, y: 0});
 
-    const urlPrefix = contentType === 'Blog' ? '/blog' : '/project';
+    const urlPrefix = contentType === 'Blog' ? '/blog' : '/projects';
 
 //spawning cards animation
     useEffect(() => {
