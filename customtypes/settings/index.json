@@ -52,7 +52,7 @@
           "placeholder": ""
         }
       },
-      "twitter": {
+      "twitter_link": {
         "type": "Link",
         "config": {
           "label": "Twitter Link",
@@ -61,7 +61,7 @@
           "select": null
         }
       },
-      "github": {
+      "github_link": {
         "type": "Link",
         "config": {
           "label": "GitHub Link",

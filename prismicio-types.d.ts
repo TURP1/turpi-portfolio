@@ -407,22 +407,22 @@ interface SettingsDocumentData {
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.twitter
+   * - **API ID Path**: settings.twitter_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  twitter: prismic.LinkField;
+  twitter_link: prismic.LinkField;
 
   /**
    * GitHub Link field in *Settings*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.github
+   * - **API ID Path**: settings.github_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  github: prismic.LinkField;
+  github_link: prismic.LinkField;
 
   /**
    * LinkedIn Link field in *Settings*
