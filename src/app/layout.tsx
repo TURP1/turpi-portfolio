@@ -14,12 +14,44 @@ export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
     const settings = await client.getSingle("settings");
 
+    const ogTitle = settings.data.meta_title || 'Creative Frontend Developer';
+    const ogDescription = settings.data.meta_description || 'Passionate and skilled Creative Frontend Developer with expertise in Next.js, three.js, GSAP, and CRM. Experienced in creating engaging user interfaces and optimizing user experiences. Check out my portfolio to see my latest projects and accomplishments.';
+    const ogLink = 'https://turpi-portfolio.vercel.app';
+    const ogImage = settings.data.og_image?.url || "";
+    const ogSite = 'Turpi-Portfolio';
+
+
     return {
         title: settings.data.meta_title,
         description: settings.data.meta_description,
-        // openGraph: {
-        //   images: [settings.data.og_image?.url || ""],
-        // },
+        openGraph: {
+            title: ogTitle,
+            description: ogDescription,
+            url: ogLink,
+            siteName: ogSite,
+            images: [
+                {
+                    url: ogImage,
+                    width: 800,
+                    height: 600,
+                },
+                {
+                    url: ogImage,
+                    width: 1800,
+                    height: 1600,
+                    alt: 'My custom alt',
+                },
+            ],
+            locale: 'en_US',
+            type: 'website',
+        },
+        twitter: {
+            site: 'ogSite',
+            creator: 'Turpi',
+            title: ogTitle,
+            description: ogDescription,
+            images: ogImage,
+        }
     };
 }
 
