@@ -84,7 +84,7 @@ const TechList = ({slice}: TechListProps): JSX.Element => {
                                  <MdCircle/>
                             </span>
                         </React.Fragment>
-                    ))}˝
+                    ))}
                 </div>
             ))}
         </section>
